@@ -329,6 +329,53 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:first-child {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 8px;
+}
+
+.hamburger span:last-child {
+    top: 16px;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:first-child {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:last-child {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar .container {
@@ -352,4 +399,88 @@ footer {
     .hero p {
         font-size: 1.2rem;
     }
+
+    .hamburger {
+        display: block;
+        z-index: 101;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
+    }
+
+    .navbar .container {
+        padding: 1rem;
+        position: relative;
+    }
+
+    .logo img {
+        height: 30px;
+    }
 } 
+
+/* Additional Responsive Styles */
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .focus-grid,
+    .services-grid,
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Optional: Hide menu on scroll */
+let lastScrollTop = 0;
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        document.querySelector('.navbar').style.top = '-80px';
+    } else {
+        // Scrolling up
+        document.querySelector('.navbar').style.top = '0';
+    }
+    lastScrollTop = scrollTop;
+}); 
