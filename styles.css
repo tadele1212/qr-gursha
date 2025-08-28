@@ -66,14 +66,36 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
-                url('assets/hero-bg.jpg') center/cover;
+    background: linear-gradient(45deg, 
+        #FFD700,  /* Pure gold */
+        #FFA500,  /* Orange gold */
+        #DAA520,  /* Golden rod */
+        #B8860B   /* Dark golden rod */
+    );
     height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--white);
     padding-top: 80px;
+}
+
+/* Optional: Add a subtle animation to make the gradient move */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
 }
 
 .hero h1 {
